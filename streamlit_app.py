@@ -24,8 +24,6 @@ fruits_to_show = my_fruit_list.loc[fruits_selected]
 # display the table on the page
 streamlit.dataframe(fruits_to_show)
 
-
-
 # create the repeatable code block 
 def get_fruityvice_data(this_fruit_choice):
   # save users selection in a variable
@@ -47,9 +45,6 @@ try:
 except URLError as e:
   streamlit.error()
 
-# don't run anythin past here while we troubleshoot
-streamlit.stop()
-
 # Next section
 streamlit.header("The fruit load list contains:")
 # Snowflake related functions
@@ -64,6 +59,9 @@ if streamlit.button('Get Fruit Load List'):
   my_data_rows = get_fruit_load_list()
   streamlit.dataframe(my_data_rows)
 
+ # don't run anythin past here while we troubleshoot
+streamlit.stop()
+  
 # save users selection in a variable
 add_my_fruit = streamlit.text_input('What fruit would you like to add?', 'Jackfruit')
 streamlit.write('Thanks for adding ', add_my_fruit, ' !')
